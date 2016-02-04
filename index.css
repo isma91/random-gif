@@ -1,0 +1,19 @@
+body,html {
+	width: 100%;
+	height: 100%;
+}
+#count {
+	font-size: 2em;
+	margin: auto;
+	text-align: center;
+}
+#refresh {
+	cursor: pointer;
+	width: 5%;
+	height: 5%;
+}
+.gif {
+	width: 19%;
+	height: 19%;
+	float: left;
+}
