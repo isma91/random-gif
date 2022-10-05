@@ -6,9 +6,10 @@ $(document).ready(function () {
 	var i, count;
 	count = 30;
 	function random_gif (id_selector) {
-		$.get('http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC', function (data) {
+		$.get('http://api.giphy.com/v1/gifs/random?api_key=GIPHY_API_KEY', function (data) {
 			if (data.meta.msg === "OK" && data.meta.status === 200) {
-				$(id_selector).append('<img class="gif" src="' + data.data.image_original_url + '" alt="some random gif" />');
+				console.log(data);
+				$(id_selector).append('<img class="gif" src="' + data.data.images.original.url + '" alt="some random gif" />');
 			}
 		});
 	}
@@ -20,17 +21,12 @@ $(document).ready(function () {
 		}
 	}
 	setInterval(function () {
-		$('#count').html('Gif refresh in ' + count + ' s ... You can click the refresh icon if you want new gifs !! <img id="refresh" src="refresh.png" alt="refresh_icon" />');
+		$('#count').html('Gif refresh in ' + count + ' s ...');
 		count = count - 1;
 		if (count <= 0) {
 			send_random_gif('#gif');
 			count = 30;
 		}
 	}, 1000);
-	$('body').on('click', '#refresh', function (event) {
-		event.preventDefault();
-		send_random_gif('#gif');
-		count = 30;
-	});
 	send_random_gif('#gif');
 });
